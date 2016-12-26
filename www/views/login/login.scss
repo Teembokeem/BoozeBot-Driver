@@ -1,0 +1,42 @@
+.login-view {
+    .scroll {
+        * {
+            // color: red;
+
+        }
+
+        .hero-container {
+            margin-top: 40%;
+            margin-bottom: 20%;
+
+            h1 {
+                font-weight: light;
+            }
+            h4 {
+                font-weight: bold;
+            }
+        }
+
+        .login-form {
+            padding: 0 3em;
+            text-align: center;
+
+            .list {
+                label {
+                    border: none;
+                    border-bottom: 1px solid #ddd;
+                    margin-bottom: 0.1em;
+                }
+
+                label:last-of-type {
+                    margin-bottom: 10%;
+                }
+
+                button {
+                    width: 85%;
+                }
+            }
+        }
+
+    }
+}

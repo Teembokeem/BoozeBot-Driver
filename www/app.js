@@ -11,11 +11,16 @@
     .run(init);
 
   // Configure routing/abstract state
-  routes.$inject = ['$urlRouterProvider'];
-  function routes($urlRouterProvider) {
+  routes.$inject = ['$urlRouterProvider', 'authServiceProvider'];
+  function routes($urlRouterProvider, authServiceProvider) {
 
-    // Default route if undefined route called
-    $urlRouterProvider.otherwise('/tab/dash');
+    var noAuthRoute = '/login',
+      authRoute = '/app';
+
+    // App confguration goes here.
+    var authService = authServiceProvider.$get();
+
+    authService.configRoutes($urlRouterProvider.otherwise, authRoute, noAuthRoute);
   }
 
   // Initialize App
