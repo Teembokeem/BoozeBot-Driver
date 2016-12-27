@@ -3,7 +3,7 @@
 
     var dir = 'views';
     angular
-        .module('currentOrder', ['scanner', 'verifyCard'])
+        .module('currentOrder', ['cancelOrderButton', 'cancelOrder', 'scanner', 'verifyCard', 'signature', 'completedOrder'])
         .config(routes)
         .controller('currentOrderCrtl', currentOrderCrtl);
 
@@ -14,11 +14,12 @@
                 url: '/currentOrder',
                 templateUrl: dir + '/currentOrder/currentOrder.html',
                 controller: currentOrderCrtl,
-                controllerAs: '$ctrl'
+                controllerAs: '$ctrl',
+                cache: false
             });
     }
 
-    currentOrderCrtl.inject = ['$state', 'Order'];
+    currentOrderCrtl.$inject = ['$state', 'Order'];
     function currentOrderCrtl($state, Order) {
         var $ctrl = this;
         $ctrl.goToOrders = goToOrders;
