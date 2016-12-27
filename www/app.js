@@ -15,7 +15,7 @@
   function routes($urlRouterProvider, authServiceProvider) {
 
     var noAuthRoute = '/login',
-      authRoute = '/app';
+      authRoute = '/app/orders';
 
     // App confguration goes here.
     var authService = authServiceProvider.$get();
