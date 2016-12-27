@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('core', [
+        'stateManager',
         'cache',
         'auth',
         'OrderApi'
