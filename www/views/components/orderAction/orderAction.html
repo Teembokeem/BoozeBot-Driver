@@ -1,0 +1,4 @@
+<div>
+    <button ng-if="$ctrl.order.status == 'Assigned'" ng-click="$ctrl.action('accept')">Accept</button>
+    <button ng-if="$ctrl.order.status == 'Accepted'" ng-click="$ctrl.action('start')">Start</button>
+</div>
