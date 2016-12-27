@@ -68,38 +68,49 @@
 
             if (!email) {
                 deffered.reject('Must have a valid email address');
+                return deffered.promise;
             }
             else if (!pass) {
                 deffered.reject('Must have a valid password');
+                return deffered.promise;
             }
 
             //  // Fake Api
-             fakeAuth({email: email, password: pass}, deffered);
-             return deffered.promise.then(function(res) {
+            //  fakeAuth({email: email, password: pass}, deffered);
+            //  return deffered.promise.then(function(res) {
 
-                 return storeUser(res.data.token);
-             })
+            //      return storeUser(res.data.token);
+            //  })
 
             // Real Api
-            // return $http({
-            //     method: 'POST',
-            //     url: urlFactory + '/api/authenticate',
-            //     data: data
-            // })
-            //     .then(function (res) {
-            //         tokenService.set(res.data);
-            //         routes.otherwise(routes.authRoute || '/');
-            //         return new authUser(tokenService.decode());
-            //     })
-            //     .catch(function (err) {
-            //         if (err.message) {
-            //             throw err.message;
-            //         }
-            //         if (err.data && err.data.message) {
-            //             throw err.data.message;
-            //         }
-            //         throw err;
-            //     })
+            return $http({
+                method: 'POST',
+                url: url.api + '/login',
+                data: {
+                    email: email,
+                    password: pass
+                }
+            })
+                .then(function (res) {
+                    // If no .token, data will be the token
+                    tokenService.set(res.data.token || res.data);
+                    routes.otherwise(routes.authRoute || '/');
+                    return new authUser(tokenService.decode());
+                })
+                .catch(function (err) {
+                    if (err.message) {
+                        throw err.message;
+                    }
+                    if (err.data) {
+                        if (err.data.message) {
+                            throw err.data.message;
+                        }
+                        if (err.data.error) {
+                            throw err.data.error;
+                        }
+                    }
+                    throw err;
+                })
         }
 
         function signUp(data) {
