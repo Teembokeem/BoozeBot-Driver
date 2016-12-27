@@ -34,7 +34,7 @@
         }
 
         function goApp() {
-            return $state.go('app');
+            return $state.go('app.orders');
         }
 
         function login(email, pass) {
