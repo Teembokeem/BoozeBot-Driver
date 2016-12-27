@@ -10,6 +10,9 @@
 
         function authUser(data) {
             Object.assign(this, data);
+            this.firstName = this.name.first || '';
+            this.lastName = this.name.last || '';
+            this.fullName = this.firstName + ' ' + this.lastName;
             return this;
         }
         return authUser;
