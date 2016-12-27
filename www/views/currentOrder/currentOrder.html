@@ -1,12 +1,17 @@
-<ion-view>
+<ion-view title="Current Order">
     <ion-content>
         <button class="button button-passive" ng-click="$ctrl.goToOrders()">Orders List</button>
-        Current Order Goes Here
-        {{$ctrl.currentOrder._id}}
-        <div>Map Goes Here With link to maps app</div>
-        <div>Product List Goes Here</div>
-        <div>Call Owner</div>
-        <button class="button button-assertive">Cancel</button>
-        <button class="button button-passive" ng-click="$ctrl.startScan()">Scan Id</button>
+        <div ng-if="!$ctrl.currentOrder">
+            No Order Selected please select one from your accepted list.
+        </div>
+        <div ng-if="$ctrl.currentOrder">
+            Current Order Goes Here
+            {{$ctrl.currentOrder._id}}
+            <div>Map Goes Here With link to maps app</div>
+            <div>Product List Goes Here</div>
+            <div>Call Owner</div>
+            <cancel-order-button></cancel-order-button>
+            <button class="button button-passive" ng-click="$ctrl.startScan()">Scan Id</button>
+        </div>
     </ion-content>
 </ion-view>
