@@ -18,8 +18,8 @@
             });
     }
 
-    scannerCrtl.inject = ['$state', 'Order'];
-    function scannerCrtl($state, Order) {
+    scannerCrtl.$inject = ['stateManager', 'Order'];
+    function scannerCrtl(state, Order) {
         var $ctrl = this;
         $ctrl.scan = scan;
 
@@ -28,11 +28,14 @@
         ////////////////
 
         function activate() {
+            if (!Order.current) {
+                return state.goNoBack('app.orders');
+            }
             $ctrl.currentOrder = Order.current;
         }
 
         function goToVerify() {
-            $state.go('app.verifyCard');
+            state.go('app.verifyCard');
         }
 
         function scan() {

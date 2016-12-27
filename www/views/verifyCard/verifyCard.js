@@ -18,16 +18,28 @@
             });
     }
 
-    verifyCardCrtl.inject = ['$state', 'Order'];
-    function verifyCardCrtl($state, Order) {
+    verifyCardCrtl.$inject = ['stateManager', 'Order'];
+    function verifyCardCrtl(state, Order) {
         var $ctrl = this;
 
-        activate();
+        $ctrl.verified = verified;
 
+        activate();
         ////////////////
 
         function activate() {
+            if (!Order.current) {
+                return state.goNoBack('app.orders');
+            }
             $ctrl.currentOrder = Order.current;
+        }
+
+        function goToSig() {
+            state.go('app.signature');
+        }
+
+        function verified() {
+            goToSig();
         }
     }
 })();

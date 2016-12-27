@@ -17,8 +17,8 @@
             },
         });
 
-    orderActionCtrl.inject = ['$ionicHistory'];
-    function orderActionCtrl($ionicHistory) {
+    orderActionCtrl.$inject = ['stateManager', '$ionicHistory'];
+    function orderActionCtrl(state, $ionicHistory) {
         var $ctrl = this;
 
         $ctrl.action = action;
@@ -35,8 +35,11 @@
 
         function action(method) {
             $ctrl.order[method]()
-                goBack();
 
+            if (method == 'start') {
+                return state.goNoBack('app.currentOrder');
+            }
+            return goBack();
         }
     }
 })();
