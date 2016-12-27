@@ -24,9 +24,7 @@
 
         ////////////////
 
-        $ctrl.$onInit = function() {
-            console.log('Init!', $ctrl.field);
-        };
+        $ctrl.$onInit = function() {};
         $ctrl.$onChanges = function(changesObj) { };
         $ctrl.$onDestroy = function() {};
     }
