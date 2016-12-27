@@ -9,8 +9,6 @@
 
     routes.$inject = ['$stateProvider'];
     function routes($stateProvider) {
-        console.log('asdfasdfasdf');
-
         $stateProvider
             .state('app.orders', {
                 url: '/orders',
@@ -20,7 +18,7 @@
             });
     }
 
-    ordersCtrl.inject = ['$state'];
+    ordersCtrl.$inject = ['$state'];
     function ordersCtrl($state) {
         var $ctrl = this
         $ctrl.view = 'Accepted';
@@ -33,7 +31,6 @@
         ////////////////
 
         function activate() {
-            console.log('Activated');
             toggleView();
 
         }

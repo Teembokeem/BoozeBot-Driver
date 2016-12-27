@@ -9,8 +9,6 @@
 
     routes.$inject = ['$stateProvider'];
     function routes($stateProvider) {
-        console.log('asdfasdfasdf');
-
         $stateProvider
             .state('app.orderDetails', {
                 url: '/orderDetails/:id',
