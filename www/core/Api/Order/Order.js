@@ -189,6 +189,9 @@ var _O, _Os, od;
 
         Order.subscribe = function (fn) {
             Order._subs = Order._subs || [];
+            if (Order._subs.indexOf(fn) >= 0) {
+                return Order._subs.indexOf(fn);
+            }
             Order._subs.push(fn);
             return Order._subs.length - 1;
         };
@@ -235,6 +238,14 @@ var _O, _Os, od;
             return Order;
         };
 
+        Order.complete = function() {
+            if (Order.current) {
+                Order.current.complete();
+                Order.current = null;
+            }
+            return Order;
+        };
+
         Order.connectSocket = function () {
             var nsp = io('http://localhost:3000/api/orders');
             Order.attachListeners(nsp);
@@ -260,7 +271,7 @@ var _O, _Os, od;
         // ===============Protoype===================
         // Methods (documents) order
         Order.prototype.update = function (updates) {
-            orderSchema(updates, this);
+            orderSchema(updates || this, this);
             Order.updateSubs();
             return this;
         };
@@ -276,16 +287,29 @@ var _O, _Os, od;
         Order.prototype.accept = function() {
             console.log('Accepting!', this);
             this.status = 'Accepted';
-            Order.update(this);
+            this.update();
             return this;
         };
 
         Order.prototype.start = function() {
             console.log('Starting!', this);
             this.status = 'In Progress';
-            Order.update(this);
+            this.update();
             Order.setCurrent(this);
             return this;
+        };
+
+        Order.prototype.cancel = function() {
+            console.log('Canceling Order!', this);
+            this.status = 'Canceled';
+            this.update();
+            return this;
+        };
+
+        Order.prototype.complete = function() {
+            console.log('Completing order!');
+            this.status = 'Completed';
+            return this.update();
         };
 
 
