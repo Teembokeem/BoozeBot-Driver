@@ -12,7 +12,8 @@
         var service = {
             getToken:getToken,
             set: setToken,
-            decode: decode
+            decode: decode,
+            destroy: destroy
         };
 
         return service;
@@ -24,6 +25,10 @@
         function setToken(token) {
             cache.set(token);
             return getToken();
+        }
+
+        function destroy() {
+            return setToken(null);
         }
 
         function decode() {

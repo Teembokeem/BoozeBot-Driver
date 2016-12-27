@@ -147,11 +147,9 @@
 
         function logOut() {
             var deffered = $q.defer();
-            tokenService.destroy();
             $log.debug("Goodbye.")
             routes.otherwise(routes.noAuthRoute || '/');
-            localStorage.clear();
-            deffered.resolve({});
+            deffered.resolve(tokenService.destroy());
             return deffered.promise;
         }
 

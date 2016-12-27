@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('views', [
+        'core',
         'login',
         'orders',
         'orderDetails',
@@ -14,7 +15,7 @@
         .config(routes)
         .controller('menuCtrl', menuCtrl);
 
-    routes.$inject = ['$stateProvider'];
+    routes.$inject = ['$stateProvider', ];
     function routes($stateProvider) {
         var dir = 'views'
         $stateProvider
@@ -27,13 +28,20 @@
             });
     }
 
-    function menuCtrl() {
+    menuCtrl.$inject = ['stateManager', 'authService'];
+    function menuCtrl(state, authService) {
         var $ctrl = this;
 
         $ctrl.logout = logout;
 
+        function goToLogin() {
+            return state.go('login');
+        }
+
         function logout() {
             console.log('Logging out...');
+            authService.logOut()
+                .then(goToLogin);
         }
     }
 })();
