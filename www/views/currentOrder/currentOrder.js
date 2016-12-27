@@ -3,7 +3,7 @@
 
     var dir = 'views';
     angular
-        .module('currentOrder', [])
+        .module('currentOrder', ['scanner', 'verifyCard'])
         .config(routes)
         .controller('currentOrderCrtl', currentOrderCrtl);
 
@@ -22,6 +22,7 @@
     function currentOrderCrtl($state, Order) {
         var $ctrl = this;
         $ctrl.goToOrders = goToOrders;
+        $ctrl.startScan = startScan;
 
         activate();
 
@@ -33,6 +34,11 @@
 
         function goToOrders() {
             $state.go('app.orders');
+        }
+
+        function startScan() {
+            console.log('Scanning')
+            $state.go('app.scanner');
         }
     }
 })();
