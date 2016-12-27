@@ -1,0 +1,5 @@
+<ion-list>
+    <ion-item ng-repeat="order in $ctrl.orders" ui-sref="app.orderDetails({id: order._id})">
+        {{order._id }} {{order.owner.fullName}} - {{order.address}}
+    </ion-item>
+</ion-list>
