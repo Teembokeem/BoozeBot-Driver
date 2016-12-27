@@ -2,13 +2,17 @@
     'use strict';
 
     angular.module('views', [
-        'login'
+        'login',
+        'orders',
+        'orderDetails',
+        'currentOrder'
         // 'account',
         // 'camera',
         // 'chat',
         // 'dash'
     ])
-        .config(routes);
+        .config(routes)
+        .controller('menuCtrl', menuCtrl);
 
     routes.$inject = ['$stateProvider'];
     function routes($stateProvider) {
@@ -16,9 +20,20 @@
         $stateProvider
             .state('app', {
                 url: '/app',
-                // abstract: true,
-                // templateUrl: dir + '/tabs.html'
-                templateUrl: dir + '/sidemenu.html'
+                abstract: true,
+                templateUrl: dir + '/sidemenu.html',
+                controller: menuCtrl,
+                controllerAs: '$ctrl'
             });
+    }
+
+    function menuCtrl() {
+        var $ctrl = this;
+
+        $ctrl.logout = logout;
+
+        function logout() {
+            console.log('Logging out...');
+        }
     }
 })();
