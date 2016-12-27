@@ -17,7 +17,7 @@ var _ctrl
             },
         });
 
-    ordersListCtrl.inject = ['$scope', 'Order'];
+    ordersListCtrl.$inject = ['$scope', 'Order'];
     function ordersListCtrl($scope, Order) {
         var $ctrl = this;
 
@@ -25,7 +25,6 @@ var _ctrl
         ////////////////
 
         $ctrl.$onInit = function() {
-            console.log('Init', $ctrl.status);
             $ctrl.sub = Order.subscribe(function() {
                 setOrders(Order.get());
             });
@@ -33,8 +32,7 @@ var _ctrl
         };
         $ctrl.$onChanges = function(changesObj) { };
         $ctrl.$onDestroy = function() {
-            console.log('Destroyed!', $ctrl.status);
-            Order.unsubscribe(setOrders);
+            // Order.unsubscribe(setOrders);
         };
 
         function byStatus(order) {
