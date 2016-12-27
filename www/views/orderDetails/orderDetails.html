@@ -1,0 +1,11 @@
+<ion-view title="Order Details">
+    <ion-content>
+        Order Details here
+        <div>Map Goes Here</div>
+        <div>Product List Goes Here</div>
+        {{$ctrl.order._id}}
+
+        <!--<button class="button button-passive" ng-click="$ctrl.accept()">Accept</button>-->
+        <order-action order="$ctrl.order"></order-action>
+    </ion-content>
+</ion-view>
