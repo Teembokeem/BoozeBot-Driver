@@ -141,9 +141,8 @@
         }
 
         function isLoggedIn() {
-            console.log('tokenService.getToken()', tokenService.getToken());
-
-            return (tokenService.getToken() != null);
+            console.log('Is loggedIn', !!(tokenService.getToken()));
+            return !!(tokenService.getToken());
         }
 
         function logOut() {
@@ -187,7 +186,6 @@
                 routes.loggedIn :
                 routes.loggedOut;
 
-                console.log('Allo', curDefault)
             routes.otherwise(curDefault);
             return curDefault;
         }
