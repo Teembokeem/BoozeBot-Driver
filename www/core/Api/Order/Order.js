@@ -5,10 +5,7 @@ var _O, _Os, od;
     angular
         .module('OrderApi', ['api'])
         .factory('OrderDispatch', OrderDispatch)
-        .factory('Order', OrderService)
-        .run(function(Order) {
-
-        });
+        .factory('Order', OrderService);
 
         function log(str) {
             return function (data) {
