@@ -7,7 +7,6 @@
 
     cache.inject = ['store'];
     function cache(store) {
-        console.log('A;;')
         var _cache = store.getNamespacedStore('jasons_driver');
 
         function Cache(ns) {
