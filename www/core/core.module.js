@@ -13,7 +13,8 @@
 
             return {
                 base: base,
-                api: base + '/api'
+                api: base + '/api/drivers'
             };
-        });
+        // Immediatley invoke to alwauys return obj with scope
+        }());
 })();
