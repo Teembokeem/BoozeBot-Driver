@@ -6,7 +6,8 @@
         'login',
         'orders',
         'orderDetails',
-        'currentOrder'
+        'currentOrder',
+        'settings'
         // 'account',
         // 'camera',
         // 'chat',

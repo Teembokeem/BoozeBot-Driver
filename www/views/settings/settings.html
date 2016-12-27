@@ -1,0 +1,15 @@
+<ion-view title="Settings">
+    <ion-nav-buttons side="right">
+        <button class="button" ng-click="$ctrl.cancel()">Cancel</button>
+    </ion-nav-buttons>
+    <ion-content>
+        Settings Go Here
+        <form ng-submit="$ctrl.save()">
+            <settings-field model="$ctrl.user" name="firstName"></settings-field>
+            <settings-field model="$ctrl.user" name="lastName"></settings-field>
+            <settings-field model="$ctrl.user" name="email"></settings-field>
+            <settings-field model="$ctrl.user" name="phone"></settings-field>
+            <button type="submit" class="button button-positive">Save</button>
+        </form>
+    </ion-content>
+</ion-view>
