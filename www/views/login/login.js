@@ -37,15 +37,16 @@
             return $state.go('app.orders');
         }
 
+        function setError(err) {
+            $ctrl.error = err;
+        }
+
         function login(email, pass) {
             $ctrl.error = null;
 
             return authService.logIn(email, pass)
                     .then(goApp)
-                    .catch(function(err) {
-                        console.log('Err', err);
-                        $ctrl.error = err.data.message
-                    });
+                    .catch(setError);
         }
     }
 })();
