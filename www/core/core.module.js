@@ -3,7 +3,8 @@
 
     angular.module('core', [
         'cache',
-        'auth'
+        'auth',
+        'OrderApi'
 
     ])
         .constant('url', function() {
