@@ -15,7 +15,7 @@ var _O, _Os, od;
 
     OrderDispatch.$inject = ['$q', '$http', 'url'];
     function OrderDispatch($q, $http, url) {
-        var base = url.api + '/admin/orders';
+        var base = url.api + '/orders';
         var service = {
             get: get,
             update: update
@@ -29,11 +29,11 @@ var _O, _Os, od;
         }
 
         function get(id) {
-            var prom = $q.defer();
-            prom.resolve(fakeData());
-            return prom.promise;
-            // var query = id ? '?id=' + id : '';
-            // return $http.get(base + query).then(format);
+            // var prom = $q.defer();
+            // prom.resolve(fakeData());
+            // return prom.promise;
+            var query = id ? '?id=' + id : '';
+            return $http.get(base + query).then(format);
         }
 
         function update(order) {
@@ -133,11 +133,13 @@ var _O, _Os, od;
             status: String,
             products: Array,
             driver: String,
-            tax: String,
+            qty: Array,
+            tax: Number,
             subTotal: Number,
             total: Number,
             owner: Object,
-            address: String
+            address: Object,
+            creditCard: Object
         });
         _Os = orderSchema;
 
@@ -207,7 +209,7 @@ var _O, _Os, od;
 
         Order.load = function () {
             Order.clear();
-            return getter().then(Order.create);
+            return getter().then(Order.create).then(Order.updateSubs);
         };
 
 
