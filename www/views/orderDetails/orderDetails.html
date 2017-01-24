@@ -1,11 +1,83 @@
 <ion-view title="Order Details">
-    <ion-content>
-        Order Details here
-        <div>Map Goes Here</div>
-        <div>Product List Goes Here</div>
-        {{$ctrl.order._id}}
+    <ion-nav-title class="orders-show-title">
+        <span class="address">
+            {{$ctrl.order.address.description.substring(0, ",")}}
+        </span>
+        <span class="distance">
+            {{$ctrl.order.distance}}
+        </span>
+    </ion-nav-title>
+  <ion-content class="orders-show-view">
+      <br>
+      <div class="order-summary container">
+          <div class="row">
+              <div class="col form-title">
+                  ORDER SUMMARY
+              </div>
+          </div>
+          <div ng-repeat="product in $ctrl.order.products" class="row">
+              <div class="col-30 product-image">
+                  <img src="{{product.image}}" alt="">
+                  
+              </div>
+              <div class="col-70 product-description">
+                  <span class="quantity">{{product.qty}}</span>
+                  <span class="description">{{product.Description}}</span>
+                  <span class="brand">{{product.brand}}</span>
+                  <span class="price">${{product.price}}</span>
 
-        <!--<button class="button button-passive" ng-click="$ctrl.accept()">Accept</button>-->
-        <order-action order="$ctrl.order"></order-action>
-    </ion-content>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col form-title">
+                  DELIVERY NOTES
+              </div>
+          </div>
+          <div class="row">
+              <div class="col">
+                  {{$ctrl.order.deliveryNotes}}
+              </div>
+          </div>
+          <div class="row">
+              <div class="col form-title">
+                  ORDER STATUS
+              </div>
+          </div>
+          <div class="row">
+              <div class="col">
+                 ID SCANNED:  {{$ctrl.order.idScan}}
+              </div>
+              <div class="col">
+                 VERIFIED:  {{$ctrl.order.verified}}
+              </div>
+              <div class="col">
+                SCANNED:  {{$ctrl.order.signed}}
+              </div>
+          </div>
+          <div class="row">
+              <div class="col form-title">
+                  DELIVERY ATTEMPTS
+              </div>
+          </div>
+          <div ng-repeat="note in $ctrl.order.attemptNotes" class="row">
+              <div class="col attempt-notes">
+                <span class="attempt"> {{$index + 1}} </span>
+                <span>{{note}}</span> 
+              </div>
+          </div>
+          <div class="spacer"></div>
+      </div>
+  </ion-content>
+          <div  ng-click="$ctrl.acceptOrder($ctrl.order)" class="accept-container container">
+              <div class="row">
+                  <div class="col-30">
+                      <img src="{{$ctrl.order.customer.image}}" alt="">
+                  </div>
+                  <div class="col text">
+                      <span class="call-to-action">TAP TO ACCEPT</span>
+                      <span class="customer-name">{{$ctrl.order.customer.full}}</span>
+                  </div>
+              </div>
+           <order-action order="$ctrl.order"></order-action>
+          </div>
 </ion-view>
