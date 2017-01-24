@@ -37,7 +37,7 @@ var _O, _Os, od;
         }
 
         function update(order) {
-            return $http.put(base).then(format);
+            return $http.put(base, order).then(format);
         }
 
 
@@ -133,6 +133,7 @@ var _O, _Os, od;
             status: String,
             products: Array,
             driver: String,
+            createdAt: String,
             qty: Array,
             tax: Number,
             subTotal: Number,
@@ -165,6 +166,7 @@ var _O, _Os, od;
 
         // id is optional if not wanting to include in updates
         Order.update = function (updates, id) {
+            console.log('sending update')
             var order = Order.findById(updates._id || id);
             return order ? order.update(updates) : null;
         };
@@ -246,7 +248,7 @@ var _O, _Os, od;
         };
 
         Order.connectSocket = function () {
-            var nsp = io('http://localhost:3000/api/orders');
+            var nsp = io('http://192.168.0.4:3000/api/orders');
             Order.attachListeners(nsp);
         }
 
@@ -270,8 +272,10 @@ var _O, _Os, od;
         // ===============Protoype===================
         // Methods (documents) order
         Order.prototype.update = function (updates) {
+            console.log("last step", this)
             orderSchema(updates || this, this);
             Order.updateSubs();
+            dispatch.update({_id: this._id, status: this.status});
             return this;
         };
 
@@ -314,7 +318,7 @@ var _O, _Os, od;
 
         // Order.attachListeners(nsp);
         Order.load();
-        // Order.connectSocket();
+        Order.connectSocket();
         return Order;
 
         ////////////////
