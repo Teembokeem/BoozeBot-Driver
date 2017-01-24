@@ -1,5 +1,13 @@
-<ion-list>
-    <ion-item ng-repeat="order in $ctrl.orders" ui-sref="app.orderDetails({id: order._id})">
-        {{order._id }} {{order.owner.fullName}} - {{order.address}}
-    </ion-item>
-</ion-list>
+<div class="row" ng-repeat="order in $ctrl.orders" ui-sref="app.orderDetails({id: order._id})">
+    <div class="col image-container">
+        <img  src=" {{order.owner.picture ? order.owner.picture : '../../../img/ionic.png'}}" alt="">
+    </div>
+    <div class="col-60 order-info-container">
+        <span class="address">{{order.address.description}}</span>
+        <span class="time">{{order.createdAt | date:'longDate'}}</span>
+    </div>
+    <div class="col-20 geolocation-container">
+        <i class="icon ion-location"></i>
+        <span class="distance">{{order.distance}}</span>
+    </div>
+</div>

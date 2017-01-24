@@ -41,6 +41,7 @@ var _ctrl
 
         function setOrders(orders) {
             $ctrl.orders = orders.filter(byStatus);
+            console.log($ctrl.orders)
             $scope.$applyAsync();
         }
     }
