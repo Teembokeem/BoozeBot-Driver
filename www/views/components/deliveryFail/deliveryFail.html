@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col title">
+        Delivery Notes
+    </div>
+</div>
+<div class="row">
+    <div class="col instruction">Write a short description why</div>
+</div>
+<div class="row">
+    <div class="col input-box">
+        <input type="text" ng-model="$ctrl.note" placeholder="TAP TO ENTER TEXT" onfocus="this.placeholder = ''" onblur="this.placeholder = 'TAP TO ENTER TEXT'">
+    </div>
+</div>
+<div class="row">
+    <div class="col submit">
+        <!--<button ng-if="$ctrl.note.length > 5" ng-click="vc.appendNote(vc.currentOrder, $ctrl.note); $ctrl.toggleNote;">SUBMIT</button>-->
+        <button ng-if="$ctrl.note.length > 5" ng-click="$ctrl.toggle();">SUBMIT</button>
+    </div>
+</div>
+<div class="row">
+    <div ng-click="$ctrl.toggle()" class="col">
+        Cancel
+    </div>
+</div>
