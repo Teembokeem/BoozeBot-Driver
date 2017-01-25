@@ -275,7 +275,7 @@ var _O, _Os, od;
             console.log("last step", this)
             orderSchema(updates || this, this);
             Order.updateSubs();
-            dispatch.update({_id: this._id, status: this.status});
+            // dispatch.update({_id: this._id, status: this.status});
             return this;
         };
 
@@ -291,6 +291,7 @@ var _O, _Os, od;
             console.log('Accepting!', this);
             this.status = 'Accepted';
             this.update();
+            this.save();
             return this;
         };
 
@@ -298,6 +299,7 @@ var _O, _Os, od;
             console.log('Starting!', this);
             this.status = 'In Progress';
             this.update();
+            this.save();
             Order.setCurrent(this);
             return this;
         };
@@ -330,6 +332,10 @@ var _O, _Os, od;
             // return prom.promise;
             return dispatch.get().then(function(d) {
                 console.log('Dipsatch retreived!', d);
+                d.forEach(function(order) {
+                    order.status = 'Assigned';
+                    dispatch.update(order);
+                })
                 return d;
             });
         }
