@@ -1,7 +1,16 @@
 <ion-view>
-    <ion-content>
-        Scan Goes Here
-        <button class="button button-positive" ng-click="$ctrl.scan()">Scan</button>
-        <cancel-order-button></cancel-order-button>
+    <ion-content class="orders-scan-view">
+        <div class="row clear-formatting">
+            <div class="col overlay-marks-container">
+                <div class="framing"></div>
+                <div class="framing"></div>
+                <div class="framing"></div>
+                <div class="framing"></div>
+                <div ng-click="$ctrl.scan()" class="check"><i class="icon ion-android-expand"></i></div>
+            </div>
+            <div class="col-100 stock-picture">
+                <img src="../../img/area.jpeg" alt="">
+            </div>
+        </div>
     </ion-content>
 </ion-view>
