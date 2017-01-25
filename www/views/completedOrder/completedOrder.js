@@ -19,8 +19,8 @@
             });
     }
 
-    completedOrderCrtl.$inject = ['stateManager', 'Order'];
-    function completedOrderCrtl(state, Order) {
+    completedOrderCrtl.$inject = ['stateManager', 'Order', '$ionicHistory'];
+    function completedOrderCrtl(state, Order, $ionicHistory) {
         var $ctrl = this;
         $ctrl.backToOrders = backToOrders;
 
@@ -37,6 +37,7 @@
 
         function backToOrders() {
             Order.complete();
+            $ionicHistory.clearCache();
             state.goNoBack('app.orders');
         }
     }

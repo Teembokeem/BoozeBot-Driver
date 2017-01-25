@@ -46,3 +46,61 @@ ion-list {
         }
     }
 }
+
+
+.popup-container {
+    .popup {
+        background-color: rgb(41, 41, 41);
+        color: white;
+        border-radius: 1.5em;
+
+        .popup-head {
+            color: white;
+            border-bottom: none;
+
+            h3 {
+                color: white;
+            }
+        }
+
+        .popup-body {
+            div:first-child {
+                img {
+                    width: 80%;
+                    border-radius: 50%;
+                    height: 184px;
+                }
+            }
+
+            
+        }
+
+        .popup-buttons {
+            button {
+                background-color: transparent;
+                padding: 0;
+                max-width: 10px;
+                height: 10px;
+                margin: 0 auto;
+                margin-bottom: 1em;
+
+                div {
+                    border-radius: 0.7em;
+                    width: 3em;
+                    margin: 0 auto;
+                    height: 3em;
+                    border-radius: 50%;
+                    background-color: firebrick;
+                    padding-top: 0.2em;
+                    margin-bottom: 2em;
+
+                    i {
+                        font-size: 2.5em;
+                        color: whitesmoke;
+                    }
+
+                }
+            }
+        }
+    }
+}

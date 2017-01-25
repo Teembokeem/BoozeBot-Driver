@@ -7,7 +7,8 @@
         'orders',
         'orderDetails',
         'currentOrder',
-        'settings'
+        'settings',
+        'ngMap'
         // 'account',
         // 'camera',
         // 'chat',
