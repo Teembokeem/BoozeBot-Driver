@@ -42,7 +42,7 @@
             console.log('Scanning id...');
             setTimeout(function() {
                 goToVerify();
-            }, 1200);
+            }, 500);
         }
     }
 })();

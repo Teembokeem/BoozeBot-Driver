@@ -1,8 +1,39 @@
 <ion-view>
-    <ion-content>
-        Signature Goes Here
-        {{$ctrl.order._id}}
-        <button class="button button-positive" ng-click="$ctrl.complete()">Complete</button>
-        <cancel-order-button></cancel-order-button>
+    <ion-content class="orders-sign-view">
+        <div class="order-container">
+            <div ng-repeat="product in $ctrl.currentOrder.products" class="row">
+                <div class="col-30 product-image">
+                    <img src="{{product.image}}" alt="">
+                    
+                </div>
+                <div class="col-70 product-description">
+                    <span class="quantity">{{product.Qty}}</span>
+                    <span class="description">{{product.Description}}</span>
+                    <span class="brand">{{product.Category}}</span>
+                    <span class="price">${{product.price}}</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="total-arrow-container">
+            <div class="row">
+                <div class="col total-container">
+                    <span>TOTAL</span>
+                    <span>{{$ctrl.currentOrder.totalQty}} ITEMS</span>
+                    <span>${{$ctrl.currentOrder.total}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="sign-container">
+                    <span>x</span>
+                    <canvas id="myCanvas" width="330" height="75"></canvas>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col button-container">
+                    <span ng-click="$ctrl.complete()">CONFIRM & SIGN</span>
+                </div>
+            </div>
+        </div>
     </ion-content>
 </ion-view>

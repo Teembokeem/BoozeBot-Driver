@@ -1,8 +1,42 @@
 <ion-view>
-    <ion-content>
-        Verify Card Goes Here
-        {{$ctrl.order._id}}
-        <button class="button button-positive" ng-click="$ctrl.verified()">Verify</button>
-        <cancel-order-button></cancel-order-button>
+    <ion-content class="orders-verify-view">
+        <div class="row verify">
+            <div class="col-100 card-container">
+                <div class="row clear-formatting card-cardholder-container">
+                    <div class="col-100">
+                        <span>{{$ctrl.order.customer.full | uppercase}}</span>
+                    </div>
+                </div>
+                <div class="row clear-formatting card-number-container">
+                    <div class="col">
+                        <span class="prop-title">CARD NUMBER</span>
+                        <span class="card-number">{{$ctrl.order.customer.card.number}}</span>
+                    </div>
+                </div>
+                <div class="row clear-formatting card-exp-ccv-container">
+                    <div class="col-100">
+                        <span class="prop-title">EXPIRATION</span>
+                        <span class="prop-title">CCV</span>
+                    </div>
+                    <div class="col">
+                        <span class="card-exp-month">{{$ctrl.order.customer.card.exp[0]}}</span>
+                        <span class="card-exp-year">{{$ctrl.order.customer.card.exp[1]}}</span>
+                        <span class="card-ccv">{{$ctrl.order.customer.card.ccv}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="action-container">
+                <div class="row">
+                    <div class="col icons">
+                        <i ng-click="$ctrl.verified()" class="icon ion-ios-checkmark-empty"></i>
+                        <i ng-click="$ctrl.toggleNote()" class="icon ion-ios-close-empty"></i>
+                    </div>
+                    <div class="col action-titles">
+                        <span ng-click="$ctrl.verified()">ACCEPT</span>
+                        <span ng-click="$ctrl.toggleNote()">DECLINE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </ion-content>
 </ion-view>

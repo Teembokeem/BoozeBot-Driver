@@ -1,3 +1,4 @@
+var _sig;
 (function() {
 'use strict';
 
@@ -21,6 +22,7 @@
     signatureCrtl.$inject = ['stateManager', 'Order'];
     function signatureCrtl(state, Order) {
         var $ctrl = this;
+        var sigpad;
 
         $ctrl.complete = complete;
 
@@ -32,6 +34,15 @@
                 return state.goNoBack('app.orders');
             }
             $ctrl.currentOrder = Order.current;
+            $ctrl.currentOrder.totalQty = $ctrl.currentOrder.qty.reduce(function(a, b) {
+                return a + b
+            }, 0);
+            angular.element(document).ready(function () {
+                var canvas = document.querySelector('canvas');
+                sigpad = new SignaturePad(canvas);
+                _sig = sigpad;
+                console.log("sigpads", sigpad)
+            });
         }
 
         function goToComplete() {
@@ -39,6 +50,9 @@
         }
 
         function complete() {
+                console.log('CONFIRMED!', sigpad.toDataURL());
+                var canvas = document.querySelector('canvas');
+                sigpad = new SignaturePad(canvas);
             goToComplete();
         }
     }
