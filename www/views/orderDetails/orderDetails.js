@@ -18,11 +18,11 @@
             });
     }
 
-    orderDetailsCtrl.$inject = ['$state', '$stateParams', 'Order'];
-    function orderDetailsCtrl($state, $stateParams, Order) {
+    orderDetailsCtrl.$inject = ['$state', '$stateParams', 'Order', 'stateManager', '$ionicHistory'];
+    function orderDetailsCtrl($state, $stateParams, Order, state, $ionicHistory) {
         var $ctrl = this
 
-        $ctrl.accept = accept;
+        $ctrl.action = action;
 
         activate();
 
@@ -35,12 +35,17 @@
 
         }
 
-        function accept() {
-            console.log('Accepting!', $ctrl.order);
+        function goBack() {
+            $ionicHistory.goBack();
         }
 
-        function start() {
-            console.log('Starting!', $ctrl.order);
+        function action(method) {
+            $ctrl.order[method]()
+
+            if (method == 'start') {
+                return state.goNoBack('app.currentOrder');
+            }
+            return goBack();
         }
     }
 })();
