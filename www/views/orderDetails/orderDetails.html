@@ -17,14 +17,13 @@
           </div>
           <div ng-repeat="product in $ctrl.order.products" class="row">
               <div class="col-30 product-image">
-                  <img src="{{product.image}}" alt="">
+                  <img src="{{product.image ? product.image : 'http://jasonsliquor.com/media/catalog/product/cache/1/small_image/142x180/17f82f742ffe127f42dca9de82fb58b1/b/e/belvedere_750ml.jpg'}}" alt="">
                   
               </div>
               <div class="col-70 product-description">
-                  <span class="quantity">{{product.qty}}</span>
+                  <span class="quantity">{{product.Qty}}</span>
                   <span class="description">{{product.Description}}</span>
-                  <span class="brand">{{product.brand}}</span>
-                  <span class="price">${{product.price}}</span>
+                  <span class="price">${{product.PriceB}}  ea</span>
 
               </div>
           </div>
@@ -38,7 +37,7 @@
                   {{$ctrl.order.deliveryNotes}}
               </div>
           </div>
-          <div class="row">
+          <!--<div class="row">
               <div class="col form-title">
                   ORDER STATUS
               </div>
@@ -53,7 +52,7 @@
               <div class="col">
                 SCANNED:  {{$ctrl.order.signed}}
               </div>
-          </div>
+          </div>-->
           <div class="row">
               <div class="col form-title">
                   DELIVERY ATTEMPTS
@@ -68,16 +67,15 @@
           <div class="spacer"></div>
       </div>
   </ion-content>
-          <div  ng-click="$ctrl.acceptOrder($ctrl.order)" class="accept-container container">
+          <div  ng-click="$ctrl.action($ctrl.order.status == 'Assigned' ? 'accept' : 'start')" class="accept-container container">
               <div class="row">
                   <div class="col-30">
-                      <img src="{{$ctrl.order.customer.image}}" alt="">
+                      <img src="{{$ctrl.order.owner.picture}}" alt="">
                   </div>
                   <div class="col text">
-                      <span class="call-to-action">TAP TO ACCEPT</span>
+                      <span class="call-to-action">TAP TO {{$ctrl.order.status == 'Assigned' ? 'ACCEPT' : 'START DELIVERY'}}</span>
                       <span class="customer-name">{{$ctrl.order.customer.full}}</span>
                   </div>
               </div>
-           <order-action order="$ctrl.order"></order-action>
           </div>
 </ion-view>
