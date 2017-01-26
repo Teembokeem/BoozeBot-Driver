@@ -137,6 +137,8 @@ var _O, _Os, od;
             qty: Array,
             tax: Number,
             subTotal: Number,
+            notes: String,
+            attempts: Array,
             total: Number,
             owner: Object,
             address: Object,
@@ -304,10 +306,12 @@ var _O, _Os, od;
             return this;
         };
 
-        Order.prototype.cancel = function() {
+        Order.prototype.cancel = function(attempt) {
             console.log('Canceling Order!', this);
-            this.status = 'Canceled';
-            this.update();
+            this.status = 'Pending';
+            this.attempts ? this.attempts.push(attempt) : this.attempts = [attempt];
+            this.remove()
+            this.save();
             return this;
         };
 
@@ -331,11 +335,11 @@ var _O, _Os, od;
             // $http.get(url + '/orders').then(log('Yes')).catch(log('No'));
             // return prom.promise;
             return dispatch.get().then(function(d) {
-                console.log('Dipsatch retreived!', d);
-                d.forEach(function(order) {
-                    order.status = 'Assigned';
-                    dispatch.update(order);
-                })
+                // console.log('Dipsatch retreived!', d);
+                // d.forEach(function(order) {
+                //     order.status = 'Assigned';
+                //     dispatch.update(order);
+                // })
                 return d;
             });
         }

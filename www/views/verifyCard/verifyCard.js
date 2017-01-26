@@ -23,6 +23,11 @@
         var $ctrl = this;
 
         $ctrl.verified = verified;
+        $ctrl.showNote = false;
+
+        $ctrl.toggleNote = function() {
+            $ctrl.showNote = !$ctrl.showNote;
+        };
 
         activate();
         ////////////////

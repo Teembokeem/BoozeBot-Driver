@@ -14,11 +14,11 @@
 <div class="row">
     <div class="col submit">
         <!--<button ng-if="$ctrl.note.length > 5" ng-click="vc.appendNote(vc.currentOrder, $ctrl.note); $ctrl.toggleNote;">SUBMIT</button>-->
-        <button ng-if="$ctrl.note.length > 5" ng-click="$ctrl.toggle();">SUBMIT</button>
+        <button ng-if="$ctrl.note.length > 5" ng-click="$ctrl.action('cancel', $ctrl.note); $ctrl.toggle();">SUBMIT</button>
     </div>
 </div>
 <div class="row">
-    <div ng-click="$ctrl.toggle()" class="col">
+    <div ng-click="$ctrl.action('cancel', $ctrl.note); $ctrl.toggle()" class="col">
         Cancel
     </div>
 </div>

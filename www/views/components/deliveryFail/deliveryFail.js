@@ -13,7 +13,8 @@
             templateUrl: dir + '/deliveryFail/deliveryFail.html',
             controller: deliveryFailCtrl,
             bindings: {
-                toggle: '='
+                toggle: '=',
+                order: '='
             },
         });
 
@@ -33,12 +34,16 @@
             $ionicHistory.goBack();
         }
 
-        function action(method) {
-            $ctrl.order[method]()
+        function action(method, attempt) {
+            $ctrl.order[method](attempt ? attempt : '')
 
             if (method == 'start') {
                 return state.goNoBack('app.currentOrder');
             }
+            if (method == 'cancel') {
+                return state.goNoBack('app.orders');
+            }
+            
             return goBack();
         }
     }
