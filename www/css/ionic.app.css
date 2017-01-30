@@ -10356,6 +10356,21 @@ delivery-fail {
   margin: 0 auto;
   margin-bottom: 1em; }
 
+.orders-completed-view .scroll {
+  height: 100%; }
+  .orders-completed-view .scroll > div {
+    width: 100%;
+    padding-top: 5rem;
+    display: block; }
+    .orders-completed-view .scroll > div span {
+      display: block;
+      width: 100%;
+      font-size: 30px;
+      line-height: 1; }
+    .orders-completed-view .scroll > div i {
+      margin-top: 2rem;
+      font-size: 80px; }
+
 .sign-container canvas {
   border-bottom: 1px solid black;
   width: 90%; }

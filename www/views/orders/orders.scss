@@ -758,6 +758,30 @@ delivery-fail {
     }
 }
 
+.orders-completed-view {
+    .scroll {
+        height: 100%;
+
+        > div {
+            width: 100%;
+            padding-top: 5rem;
+            display: block;
+
+            span {
+                display: block;
+                width: 100%;
+                font-size: 30px;
+                line-height: 1;
+            }
+
+            i {
+                margin-top: 2rem;
+                font-size: 80px;
+            }
+        }
+    }
+}
+
 .sign-container {
     canvas {
         border-bottom: 1px solid black;
