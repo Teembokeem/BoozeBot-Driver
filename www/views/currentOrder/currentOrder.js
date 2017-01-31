@@ -19,8 +19,8 @@
             });
     }
 
-    currentOrderCrtl.$inject = ['$state', 'Order', '$ionicPopup', 'NgMap', '$cordovaGeolocation', '$stateParams', 'stateManager'];
-    function currentOrderCrtl($state, Order, $ionicPopup, NgMap, $cordovaGeolocation, $stateParams, state) {
+    currentOrderCrtl.$inject = ['$state', 'Order', '$ionicPopup', 'NgMap', '$cordovaGeolocation', '$stateParams', 'stateManager', '$ionicHistory'];
+    function currentOrderCrtl($state, Order, $ionicPopup, NgMap, $cordovaGeolocation, $stateParams, state, $ionicHistory) {
         var $ctrl = this;
         $ctrl.goToOrders = goToOrders;
         $ctrl.startScan = startScan;
@@ -78,7 +78,7 @@
         };
 
         function goToOrders() {
-            $state.go('app.orders');
+            state.goNoBack('app.orders', {}, {reload: true});
         };
 
         function startScan() {
