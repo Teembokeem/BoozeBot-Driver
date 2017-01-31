@@ -1,3 +1,4 @@
+var _view;
 (function() {
 'use strict';
 
@@ -32,7 +33,7 @@
 
         function activate() {
             toggleView();
-
+            console.log('suh', $state)
         }
 
         function toggleView() {

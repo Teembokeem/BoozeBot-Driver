@@ -2,7 +2,7 @@
     <ion-content class="orders-view">
         <button class="button button-passive" ng-click="$ctrl.goToCurrent()">Current Order</button>
         <button class="button button-passive" ng-click="$ctrl.toggleView()">{{$ctrl.switchView}}</button>
-
+    
         <div ng-if="$ctrl.view === 'Assigned'">
             <orders-list status="Assigned"></orders-list>
         </div>
