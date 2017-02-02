@@ -1,15 +1,16 @@
 <ion-view>
     <ion-content class="orders-scan-view">
-        <div class="row clear-formatting">
-            <div class="col overlay-marks-container">
-                <div class="framing"></div>
-                <div class="framing"></div>
-                <div class="framing"></div>
-                <div class="framing"></div>
-                <div ng-click="$ctrl.scan()" class="check"><i class="icon ion-android-expand"></i></div>
+        <div class="container">
+            <div class="row clear-formatting">
+                <div class="col-100 stock-picture">
+                    <img id="scanner-image" src="img/area.jpeg" alt="">
+                </div>
             </div>
-            <div class="col-100 stock-picture">
-                <img src="../../img/area.jpeg" alt="">
+            <div class="row">
+                <div class="col button-container">
+                    <button ng-click="$ctrl.scan()"><i class="icon ion-ios-checkmark-outline"></i></button>
+                    <button ng-click="$ctrl.retakePicture()"><i class="icon ion-ios-refresh-outline"></i></button>
+                </div>
             </div>
         </div>
     </ion-content>
