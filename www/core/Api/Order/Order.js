@@ -142,7 +142,8 @@ var _O, _Os, od;
             total: Number,
             owner: Object,
             address: Object,
-            creditCard: Object
+            creditCard: Object,
+            idPicture: String
         });
         _Os = orderSchema;
 
@@ -250,7 +251,7 @@ var _O, _Os, od;
         };
 
         Order.connectSocket = function () {
-            var nsp = io('http://192.168.0.4:3000/api/orders');
+            var nsp = io('http://138.197.193.117:3000/api/orders');
             Order.attachListeners(nsp);
         }
 
