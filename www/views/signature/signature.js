@@ -19,8 +19,8 @@ var _sig;
             });
     }
 
-    signatureCrtl.$inject = ['stateManager', 'Order'];
-    function signatureCrtl(state, Order) {
+    signatureCrtl.$inject = ['stateManager', 'Order', 'uploadService'];
+    function signatureCrtl(state, Order, uploadService) {
         var $ctrl = this;
         var sigpad;
 
@@ -51,8 +51,12 @@ var _sig;
 
         function complete() {
                 console.log('CONFIRMED!', sigpad.toDataURL());
-                var canvas = document.querySelector('canvas');
-                sigpad = new SignaturePad(canvas);
+                uploadService.uploadFile(sigpad.toDataURL()).then(function(success) {
+                    console.log("back from cloudinary", success);
+                    Order.current.signature = success.secure_url;
+                    var canvas = document.querySelector('canvas');
+                    sigpad = new SignaturePad(canvas);
+                })
             goToComplete();
         }
     }
