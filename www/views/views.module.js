@@ -17,7 +17,7 @@
         .config(routes)
         .controller('menuCtrl', menuCtrl);
 
-    routes.$inject = ['$stateProvider', ];
+    routes.$inject = ['$stateProvider'];
     function routes($stateProvider) {
         var dir = 'views'
         $stateProvider
