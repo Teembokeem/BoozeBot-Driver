@@ -18,10 +18,13 @@
             });
     }
 
-    scannerCrtl.$inject = ['stateManager', 'Order'];
-    function scannerCrtl(state, Order) {
-        var $ctrl = this;
+    scannerCrtl.$inject = ['stateManager', 'Order', 'uploadService', '$scope'];
+    function scannerCrtl(state, Order, uploadService, $scope) {
+        var $ctrl = this,
+            camready = false;
         $ctrl.scan = scan;
+        $ctrl.retakePicture = takePicture();
+        $ctrl.img;
 
         activate();
 
@@ -32,17 +35,34 @@
                 return state.goNoBack('app.orders');
             }
             $ctrl.currentOrder = Order.current;
+            document.addEventListener("deviceready", onDeviceReady, false);
         }
 
+        function onDeviceReady() {
+
+            takePicture();
+        };
+
         function goToVerify() {
-            state.go('app.verifyCard');
+            state.go('app.signature');
         }
 
         function scan() {
-            console.log('Scanning id...');
-            setTimeout(function() {
+            uploadService.uploadFile('data:image/jpeg;base64,' + $ctrl.img).then(function(success) {
+                console.log("back from cloudinary", success);
+                Order.current.idPicture = success.secure_url;
                 goToVerify();
-            }, 500);
+            })
+        }
+
+        function takePicture() {
+            return navigator.camera.getPicture( function(success){
+                console.log("SUCCESS");
+                $ctrl.img = success;
+                angular.element(document.querySelector('#scanner-image'))[0].src = 'data:image/jpeg;base64,' + success;
+            }, function(err) {
+                console.log("ERROR", err);
+            }, {destinationType: Camera.DestinationType.DATA_URL} );
         }
     }
 })();
