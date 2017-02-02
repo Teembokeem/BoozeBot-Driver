@@ -3,9 +3,12 @@
 
     angular.module('core', [
         'stateManager',
+        'Configs',
+        'ngFileUpload',
+        'Services',
         'cache',
         'auth',
-        'OrderApi'
+        'OrderApi',
 
     ])
         .constant('url', function() {
