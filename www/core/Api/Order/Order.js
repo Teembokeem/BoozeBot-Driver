@@ -319,6 +319,8 @@ var _O, _Os, od;
         Order.prototype.complete = function() {
             console.log('Completing order!');
             this.status = 'Completed';
+            this.remove()
+            this.save();
             return this.update();
         };
 
