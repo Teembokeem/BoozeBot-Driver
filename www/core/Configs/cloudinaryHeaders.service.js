@@ -15,7 +15,6 @@
 
         ////////////////
         function checkHeaders(config) {
-            console.log('cloudz');
             // Check if going to cloudinary
             if (config.url.indexOf('api.cloudinary') >= 0 ) {
                 // Remove headers for cors

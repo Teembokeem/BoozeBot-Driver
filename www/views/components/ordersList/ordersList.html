@@ -1,6 +1,5 @@
-<div class="row" ng-repeat="order in $ctrl.orders" ui-sref="app.orderDetails({id: order._id})">
-    <div class="col image-container">
-        <img  src=" {{order.owner.picture ? order.owner.picture : '../../../img/ionic.png'}}" alt="">
+<div class="row" ng-repeat="order in $ctrl.orders" ng-click="$ctrl.moveView(order)">
+    <div class="col">
     </div>
     <div class="col-60 order-info-container">
         <span class="address">{{order.address.description}}</span>
@@ -10,4 +9,7 @@
         <i class="icon ion-location"></i>
         <span class="distance">{{order.distance}}</span>
     </div>
+</div>
+<div class="row" ng-if="$ctrl.orders.length == 0">
+    <h4>No Orders</h4>
 </div>

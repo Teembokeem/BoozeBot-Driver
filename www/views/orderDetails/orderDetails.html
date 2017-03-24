@@ -21,7 +21,7 @@
                   
               </div>
               <div class="col-70 product-description">
-                  <span class="quantity">{{product.Qty}}</span>
+                  <span class="quantity">{{$ctrl.order.qty[$index]}}</span>
                   <span class="description">{{product.Description}}</span>
                   <span class="price">${{product.PriceB}}  ea</span>
 
@@ -52,29 +52,15 @@
               <div class="col">
                 SCANNED:  {{$ctrl.order.signed}}
               </div>
-          </div>-->
-          <div class="row">
-              <div class="col form-title">
-                  DELIVERY ATTEMPTS
-              </div>
-          </div>
-          <div ng-repeat="note in $ctrl.order.attemptNotes" class="row">
-              <div class="col attempt-notes">
-                <span class="attempt"> {{$index + 1}} </span>
-                <span>{{note}}</span> 
-              </div>
-          </div>
+          </di v>-->
           <div class="spacer"></div>
       </div>
   </ion-content>
           <div  ng-click="$ctrl.action($ctrl.order.status == 'Assigned' ? 'accept' : 'start')" class="accept-container container">
               <div class="row">
-                  <div class="col-30">
-                      <img src="{{$ctrl.order.owner.picture}}" alt="">
-                  </div>
-                  <div class="col text">
-                      <span class="call-to-action">TAP TO {{$ctrl.order.status == 'Assigned' ? 'ACCEPT' : 'START DELIVERY'}}</span>
-                      <span class="customer-name">{{$ctrl.order.customer.full}}</span>
+                  <div class="col text text-center">
+                      <p class="call-to-action">TAP TO {{$ctrl.order.status == 'Assigned' ? 'ACCEPT' : 'START DELIVERY'}}</p>
+                      <p class="customer-name">{{$ctrl.order.owner.fullName}}</p>
                   </div>
               </div>
           </div>

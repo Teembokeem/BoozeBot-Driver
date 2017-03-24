@@ -11,11 +11,10 @@
     function routes($stateProvider) {
         $stateProvider
             .state('app.currentOrder', {
-                url: '/currentOrder',
+                url: '/currentOrder/:id',
                 templateUrl: dir + '/currentOrder/currentOrder.html',
                 controller: currentOrderCrtl,
                 controllerAs: '$ctrl',
-                cache: false
             });
     }
 
@@ -38,11 +37,7 @@
         ////////////////
 
         function activate() {
-            if (!Order.current) {
-                return state.goNoBack('app.orders');
-            }
-            $ctrl.currentOrder = Order.current;
-            console.log($ctrl.currentOrder);
+            $ctrl.currentOrder = Order.findById($stateParams.id)//(function(order) { return order._id === $stateParams.id})[0];
 
             NgMap.getMap().then(function(map) {
                 $ctrl.map = map;
@@ -78,7 +73,7 @@
         };
 
         function goToOrders() {
-            state.goNoBack('app.orders', {}, {reload: true});
+            // state.goNoBack('app.orders', {}, {reload: true});
         };
 
         function startScan() {

@@ -1,14 +1,12 @@
 .login-view {
+    background-color: black;
     .scroll {
-        * {
-            // color: red;
-
-        }
-
         .hero-container {
-            margin-top: 40%;
+            margin-top: 10%;
             margin-bottom: 20%;
-
+            img {
+                width: 60%;
+            }
             h1 {
                 font-weight: light;
             }
@@ -26,6 +24,7 @@
                     border: none;
                     border-bottom: 1px solid #ddd;
                     margin-bottom: 0.1em;
+                    background-color: transparent;
                 }
 
                 label:last-of-type {
@@ -34,6 +33,9 @@
 
                 button {
                     width: 85%;
+                }
+                input {
+                    color: white;
                 }
             }
         }

@@ -17,8 +17,8 @@ var _ctrl
             },
         });
 
-    ordersListCtrl.$inject = ['$scope', 'Order'];
-    function ordersListCtrl($scope, Order) {
+    ordersListCtrl.$inject = ['$scope', 'Order', '$state'];
+    function ordersListCtrl($scope, Order, $state) {
         var $ctrl = this;
 
         _ctrl= $ctrl;
@@ -41,8 +41,17 @@ var _ctrl
 
         function setOrders(orders) {
             $ctrl.orders = orders.filter(byStatus);
+            console.log('all orders', orders)
             console.log($ctrl.orders)
             $scope.$applyAsync();
+        }
+
+        $ctrl.moveView = function(order) {
+            if (order.status === 'In Progress') {
+                $state.go('app.currentOrder', {id: order._id})
+            } else {
+                $state.go('app.orderDetails', {id: order._id})
+            }
         }
     }
 })();

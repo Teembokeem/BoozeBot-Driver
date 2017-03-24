@@ -1,24 +1,10 @@
-<!--<ion-view title="Current Order">
-    <ion-content>
-        <button class="button button-passive" ng-click="$ctrl.goToOrders()">Orders List</button>
-        <div ng-if="!$ctrl.currentOrder">
-            No Order Selected please select one from your accepted list.
-        </div>
-        <div ng-if="$ctrl.currentOrder">
-            Current Order Goes Here
-            {{$ctrl.currentOrder._id}}
-            <div>Map Goes Here With link to maps app</div>
-            <div>Product List Goes Here</div>
-            <div>Call Owner</div>
-            <cancel-order-button></cancel-order-button>
-            <button class="button button-passive" ng-click="$ctrl.startScan()">Scan Id</button>
-        </div>
-    </ion-content>
-</ion-view>-->
-<ion-view>
+<ion-view title="Order Details" >
     <ion-nav-title class="orders-show-title">
         <span class="address">
-            {{$ctrl.currentOrder.address.description.substring(0, $ctrl.currentOrder.address.description.indexOf(','))}}
+            {{$ctrl.order.address.description.substring(0, ",")}}
+        </span>
+        <span class="distance">
+            {{$ctrl.order.distance}}
         </span>
     </ion-nav-title>
     <ion-content class="orders-current-view">
@@ -50,9 +36,6 @@
         </div>
         <div ng-click="$ctrl.callCustomer($ctrl.currentOrder)" class="container call-customer-container">
             <div class="row">
-                <div class="col-30">
-                    <img src="{{$ctrl.currentOrder.owner.picture}}" alt="">
-                </div>
                 <div class="col text">
                     <span class="call-to-action">TAP TO CALL</span>
                     <span class="customer-name">{{$ctrl.currentOrder.owner.name.first + " " + $ctrl.currentOrder.owner.name.last}}</span>
@@ -64,9 +47,6 @@
         </div>
         <div ng-click="$ctrl.startScan()" class="container verify-info-container">
             <div class="row">
-                <div class="col-30">
-                    <i class="icon ion-ios-checkmark"></i>   
-                </div>
                 <div class="col text">
                     <span class="call-to-action">VERIFY INFO</span>
                 </div>

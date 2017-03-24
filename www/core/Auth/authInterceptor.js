@@ -23,7 +23,6 @@
         function request(config) {
             var token = tokenService.getToken();
             if (token) {
-                console.log("Assinf")
                 config.headers['Authorization'] = 'Bearer ' + token;
             }
             return config;

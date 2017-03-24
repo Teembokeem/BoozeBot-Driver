@@ -40,11 +40,9 @@
         }
 
         function action(method) {
+            console.log('this method', method)
             $ctrl.order[method]()
 
-            if (method == 'start') {
-                return state.goNoBack('app.currentOrder');
-            }
             return goBack();
         }
     }

@@ -1,14 +1,12 @@
-<ion-view title="{{$ctrl.view}}">
+<ion-view title="Driver Orders">
     <ion-content class="orders-view">
-        <button class="button button-passive" ng-click="$ctrl.goToCurrent()">Current Order</button>
-        <button class="button button-passive" ng-click="$ctrl.toggleView()">{{$ctrl.switchView}}</button>
-    
-        <div ng-if="$ctrl.view === 'Assigned'">
-            <orders-list status="Assigned"></orders-list>
-        </div>
+        <h3 class="order-type">Assigned</h3>
+        <orders-list status="Assigned"></orders-list>
 
-        <div ng-if="$ctrl.view === 'Accepted'">
-            <orders-list status="Accepted"></orders-list>
-        </div>
+        <h3 class="order-type">Accepted</h3>
+        <orders-list status="Accepted"></orders-list>
+
+        <h3 class="order-type">In Progress</h3>
+        <orders-list status="In Progress"></orders-list>
     </ion-content>
 </ion-view>

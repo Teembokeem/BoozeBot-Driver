@@ -27,6 +27,13 @@
             height: 100%;
         }
 
+        h3.order-type {
+            padding: 5px 20px;
+            background-color: gray;
+            color: white;
+            text-align: left;
+        }
+
         > div {
             orders-list {
                 .row {
@@ -190,13 +197,14 @@
 
             .call-to-action {
                 font-weight: bold;
-                text-align: left;
+                text-align: center;
                 display: block;
 
             }
 
             .customer-name {
                 font-size: 0.8em;
+                text-align: center;
             }
         }
     }

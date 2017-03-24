@@ -150,7 +150,7 @@ var _O, _Os, od;
         // Constructor
         function Order(order) {
             var o = orderSchema(order, this);
-            o.owner.fullName = order.owner.firstName + order.owner.lastName;
+            o.owner.fullName = order.owner.name.first + ' ' + order.owner.name.last
             _orders = _orders.concat([o]);
             Order.updateSubs();
             return o;
@@ -251,7 +251,7 @@ var _O, _Os, od;
         };
 
         Order.connectSocket = function () {
-            var nsp = io('http://138.197.193.117:3000/api/orders');
+            var nsp = io('http://service.jasonsliquor.com/api/orders');
             Order.attachListeners(nsp);
         }
 

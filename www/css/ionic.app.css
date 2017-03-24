@@ -9899,6 +9899,12 @@ ion-list .list {
   width: 100%;
   height: 100%; }
 
+.orders-view .scroll h3.order-type {
+  padding: 5px 20px;
+  background-color: gray;
+  color: white;
+  text-align: left; }
+
 .orders-view .scroll > div orders-list .row {
   margin: 10px 0; }
   .orders-view .scroll > div orders-list .row .image-container {
@@ -10025,14 +10031,15 @@ ion-list .list {
     .verify-info-container .row .text .call-to-action,
     .call-to-action-container .row .text .call-to-action {
       font-weight: bold;
-      text-align: left;
+      text-align: center;
       display: block; }
     .accept-container .row .text .customer-name,
     .current-order-container .row .text .customer-name,
     .call-customer-container .row .text .customer-name,
     .verify-info-container .row .text .customer-name,
     .call-to-action-container .row .text .customer-name {
-      font-size: 0.8em; }
+      font-size: 0.8em;
+      text-align: center; }
   .accept-container order-action,
   .current-order-container order-action,
   .call-customer-container order-action,
@@ -10359,3 +10366,29 @@ delivery-fail {
 .sign-container canvas {
   border-bottom: 1px solid black;
   width: 90%; }
+
+.login-view {
+  background-color: black; }
+  .login-view .scroll .hero-container {
+    margin-top: 10%;
+    margin-bottom: 20%; }
+    .login-view .scroll .hero-container img {
+      width: 60%; }
+    .login-view .scroll .hero-container h1 {
+      font-weight: light; }
+    .login-view .scroll .hero-container h4 {
+      font-weight: bold; }
+  .login-view .scroll .login-form {
+    padding: 0 3em;
+    text-align: center; }
+    .login-view .scroll .login-form .list label {
+      border: none;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 0.1em;
+      background-color: transparent; }
+    .login-view .scroll .login-form .list label:last-of-type {
+      margin-bottom: 10%; }
+    .login-view .scroll .login-form .list button {
+      width: 85%; }
+    .login-view .scroll .login-form .list input {
+      color: white; }

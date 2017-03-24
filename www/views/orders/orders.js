@@ -22,8 +22,6 @@ var _view;
     ordersCtrl.$inject = ['$state'];
     function ordersCtrl($state) {
         var $ctrl = this
-        $ctrl.view = 'Accepted';
-        $ctrl.switchView = 'Assigned';
         $ctrl.goToCurrent = goToCurrent;
         $ctrl.toggleView = toggleView;
 
@@ -33,14 +31,10 @@ var _view;
 
         function activate() {
             toggleView();
-            console.log('suh', $state)
         }
 
-        function toggleView() {
-            var cur = $ctrl.view,
-                other = $ctrl.switchView;
-            $ctrl.view = other;
-            $ctrl.switchView = cur;
+        function toggleView(view) {
+            $ctrl.view = view;
         }
 
         function goToCurrent() {
