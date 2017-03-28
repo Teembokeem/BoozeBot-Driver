@@ -22,7 +22,6 @@ var _view;
     ordersCtrl.$inject = ['$state'];
     function ordersCtrl($state) {
         var $ctrl = this
-        $ctrl.goToCurrent = goToCurrent;
         $ctrl.toggleView = toggleView;
 
         activate();
@@ -37,8 +36,5 @@ var _view;
             $ctrl.view = view;
         }
 
-        function goToCurrent() {
-            $state.go('app.currentOrder');
-        }
     }
 })();

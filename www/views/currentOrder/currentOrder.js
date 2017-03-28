@@ -5,7 +5,8 @@
     angular
         .module('currentOrder', ['deliveryFail', 'cancelOrder', 'scanner', 'verifyCard', 'signature', 'completedOrder'])
         .config(routes)
-        .controller('currentOrderCrtl', currentOrderCrtl);
+        .controller('currentOrderCrtl', currentOrderCtrl);
+        
 
     routes.$inject = ['$stateProvider'];
     function routes($stateProvider) {
@@ -13,13 +14,13 @@
             .state('app.currentOrder', {
                 url: '/currentOrder/:id',
                 templateUrl: dir + '/currentOrder/currentOrder.html',
-                controller: currentOrderCrtl,
-                controllerAs: '$ctrl',
+                controller: currentOrderCtrl,
+                controllerAs: '$ctrl'
             });
     }
 
-    currentOrderCrtl.$inject = ['$state', 'Order', '$ionicPopup', 'NgMap', '$cordovaGeolocation', '$stateParams', 'stateManager', '$ionicHistory'];
-    function currentOrderCrtl($state, Order, $ionicPopup, NgMap, $cordovaGeolocation, $stateParams, state, $ionicHistory) {
+    currentOrderCtrl.$inject = ['$state', 'Order', '$ionicPopup', 'NgMap', '$cordovaGeolocation', '$stateParams', 'stateManager', '$ionicHistory'];
+    function currentOrderCtrl($state, Order, $ionicPopup, NgMap, $cordovaGeolocation, $stateParams, state, $ionicHistory) {
         var $ctrl = this;
         $ctrl.goToOrders = goToOrders;
         $ctrl.startScan = startScan;
@@ -38,6 +39,7 @@
 
         function activate() {
             $ctrl.currentOrder = Order.findById($stateParams.id)//(function(order) { return order._id === $stateParams.id})[0];
+            console.log($ctrl.currentOrder, 'here?')
 
             NgMap.getMap().then(function(map) {
                 $ctrl.map = map;

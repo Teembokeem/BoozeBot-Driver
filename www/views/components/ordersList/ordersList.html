@@ -1,15 +1,24 @@
-<div class="row" ng-repeat="order in $ctrl.orders" ng-click="$ctrl.moveView(order)">
-    <div class="col">
+<div ng-repeat="order in $ctrl.orders" ng-click="$ctrl.moveView(order)">
+    <div class="row">
+        <div class="col">
+            Name: <span class="address">{{order.owner.fullName}}</span>
+        </div>
     </div>
-    <div class="col-60 order-info-container">
-        <span class="address">{{order.address.description}}</span>
-        <span class="time">{{order.createdAt | date:'longDate'}}</span>
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-60 order-info-container">
+            Address: <span class="address">{{order.address.description}}</span>
+            <!--<span class="time">{{order.createdAt | date:'longDate'}}</span>-->
+        </div>
+        <div class="col-20 geolocation-container">
+            <i class="icon ion-location"></i>
+            <span class="distance">{{order.distance}}</span>
+        </div>
     </div>
-    <div class="col-20 geolocation-container">
-        <i class="icon ion-location"></i>
-        <span class="distance">{{order.distance}}</span>
-    </div>
+    <hr>
 </div>
+
 <div class="row" ng-if="$ctrl.orders.length == 0">
-    <h4>No Orders</h4>
+    <h4 class="text-center">No Orders</h4>
 </div>

@@ -1,14 +1,15 @@
-<ion-view title="Order Details" >
+<ion-view title="Order Details">
     <ion-nav-title class="orders-show-title">
         <span class="address">
-            {{$ctrl.order.address.description.substring(0, ",")}}
+            {{$ctrl.order.address.description}}
         </span>
         <span class="distance">
             {{$ctrl.order.distance}}
         </span>
     </ion-nav-title>
-    <ion-content class="orders-current-view">
-        <div class="container map-container">
+  <ion-content class="orders-show-view">
+      <div class="orders-current-view">
+          <div class="container map-container">
             <div class="row clear-formatting">
                 <div class="col clear-formatting">
                     <ng-map center="{{$ctrl.curr}}">
@@ -29,33 +30,74 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col">
+                    Address: {{$ctrl.currentOrder.address.description}}
+                </div>
+            </div>
+            <div class="row">
                 <div class="col notes-text">
                     <span>{{$ctrl.currentOrder.deliveryNotes}}</span>
                 </div>
             </div>
         </div>
-        <div ng-click="$ctrl.callCustomer($ctrl.currentOrder)" class="container call-customer-container">
+        <div class="container notes-container">
+            <div class="row">
+                <div class="col notes-title">
+                    <span>Delivery Details</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col notes-text">
+                    Customer: <span>{{$ctrl.currentOrder.owner.fullName}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col notes-text">
+                    Email: <span>{{$ctrl.currentOrder.owner.email}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col notes-text">
+                    DoB: <span>{{$ctrl.currentOrder.owner.dob}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col notes-text">
+                    Phone: <span>{{$ctrl.currentOrder.owner.phone}}</span>
+                </div>
+            </div>
+        </div>
+        <!--<div class="container call-customer-container">
             <div class="row">
                 <div class="col text">
-                    <span class="call-to-action">TAP TO CALL</span>
+                    <span ng-click="$ctrl.callCustomer($ctrl.currentOrder)" class="call-to-action">TAP TO CALL</span>
                     <span class="customer-name">{{$ctrl.currentOrder.owner.name.first + " " + $ctrl.currentOrder.owner.name.last}}</span>
                 </div>
                 <div class="col-20 telephone-icon-container">
                     <i class="icon ion-ios-telephone-outline"></i>
                 </div>
             </div>
-        </div>
+        </div>-->
         <div ng-click="$ctrl.startScan()" class="container verify-info-container">
-            <div class="row">
-                <div class="col text">
-                    <span class="call-to-action">VERIFY INFO</span>
+            <div class="notes-container">
+                 <div class="row">
+                    <div class="col notes-title">
+                        <span>Finalize</span>
+                    </div>
                 </div>
-                <div class="col-20 arrow-container">
-                    <i class="icon ion-ios-arrow-right"></i>
+                <div class="row">
+                    <div class="col text">
+                        <span class="call-to-action">VERIFY INFO</span>
+                    </div>
+                    <div class="col-20 arrow-container">
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="container call-to-action-container">
+        <br>
+        <br>
+        <div class="container call-to-action-container" >
             <div class="row">
                 <div class="col-40">
                     <button ng-click="$ctrl.toggleNote()" class="button">NO ANSWER</button>
@@ -65,6 +107,6 @@
                 </div>
             </div>
         </div>
-    </ion-content>
+    </div>
+  </ion-content>
 </ion-view>
-<delivery-fail toggle="$ctrl.toggleNote" order="$ctrl.currentOrder" ng-if="$ctrl.showNote"></delivery-fail>

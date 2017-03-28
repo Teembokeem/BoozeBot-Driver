@@ -137,6 +137,7 @@ var _O, _Os, od;
             qty: Array,
             tax: Number,
             subTotal: Number,
+            deliveryNote: String,
             notes: String,
             attempts: Array,
             total: Number,

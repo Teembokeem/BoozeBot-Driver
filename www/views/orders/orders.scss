@@ -22,6 +22,11 @@
             height: 100%;
         }
 
+        h4 {
+            margin: 5px auto;
+            text-align: center;
+        }
+
         #map {
             width: 100%;
             height: 100%;
@@ -32,6 +37,12 @@
             background-color: gray;
             color: white;
             text-align: left;
+            margin-top: 0px;
+        }
+
+        hr:last-child {
+            margin-bottom: 0px;
+            border-bottom: 0;
         }
 
         > div {
@@ -234,6 +245,10 @@
         color: black;
     }
 
+    .call-to-action-container {
+        padding-bottom: 100px;
+    }
+
     .map-container {
         .row {
             .col {
@@ -288,7 +303,12 @@
 
     .verify-info-container {
         .row {
-            padding-left: 1.4em;
+            .notes-title {
+                font-size: 1.5em;
+                font-weight: 300;
+                margin-bottom: 0.4em;
+                border-bottom: 1px solid steelblue;
+            }
 
             .col-30 {
                 padding-top: 0.5em;

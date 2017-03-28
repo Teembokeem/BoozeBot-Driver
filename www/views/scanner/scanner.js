@@ -31,9 +31,9 @@
         ////////////////
 
         function activate() {
-            if (!Order.current) {
-                return state.goNoBack('app.orders');
-            }
+            // if (!Order.current) {
+            //     return state.goNoBack('app.orders');
+            // }
             $ctrl.currentOrder = Order.current;
             document.addEventListener("deviceready", onDeviceReady, false);
         }
