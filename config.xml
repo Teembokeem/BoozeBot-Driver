@@ -55,4 +55,8 @@
     <plugin name="cordova-plugin-statusbar" spec="~2.2.2" />
     <plugin name="cordova-plugin-console" spec="~1.0.6" />
     <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
+    <plugin name="cordova-plugin-camera" spec="~2.4.0">
+        <variable name="CAMERA_USAGE_DESCRIPTION" value=" " />
+        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value=" " />
+    </plugin>
 </widget>
