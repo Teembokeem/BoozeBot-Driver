@@ -13,8 +13,8 @@
     ])
         .constant('url', function() {
             // var base = 'http://localhost';
-            var base = 'http://192.168.0.30:3000';
-            // var base = 'http://138.68.25.11';
+            //var base = 'http://192.168.0.30:3000';
+            var base = 'http://138.68.25.11';
 
             return {
                 base: base,
