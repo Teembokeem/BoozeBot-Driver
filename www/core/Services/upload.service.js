@@ -28,29 +28,21 @@
     // EXPORTED FUNCTIONS
     function uploadFile(file) {
 
-      // Fake Upload
-      // var d = $q.defer();
-      // d.resolve({
-      //   other: 'Data',
-      //   goes: 'Here',
-      //   url: "http://res.cloudinary.com/dqpfcybdo/image/upload/v1481201535/uxbjxjiw9kdjdq4legoh.jpg"
-      // });
-      // return d.promise
-
-
       // Real upload
       return Upload.upload({
-          url: "https://api.cloudinary.com/v1_1/dl6ukyqtn/image/upload",
+          url: "https://api.cloudinary.com/v1_1/jasons/image/upload",
           data: {
-            upload_preset: "kq0suhsa",
-            tags: 'myphotoalbum',
+            upload_preset: "x7c8n8fe",
+            tags: 'delivery',
             file: file,
             timeout: timeout
           }
-        })
+        }, {})
         .then(function(response) {
           // response.data = autoRotate(response.data)
-          return response.data;
+          console.log('hiiiiii', response)
+          console.log('res here', response.url)
+          return response
         })
         .catch(function(err) {
           console.log('ERRPR', err);

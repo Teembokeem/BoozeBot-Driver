@@ -34,7 +34,7 @@
             // if (!Order.current) {
             //     return state.goNoBack('app.orders');
             // }
-            $ctrl.currentOrder = Order.current;
+            $ctrl.currentOrder = Order.findById($stateParams.id)
             document.addEventListener("deviceready", onDeviceReady, false);
         }
 
