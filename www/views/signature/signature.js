@@ -30,7 +30,7 @@ var _sig;
         ////////////////
 
         function activate() {
-            $ctrl.currentOrder = Order.findById($stateParams.id)
+            $ctrl.currentOrder = Order.current
             $ctrl.currentOrder.totalQty = $ctrl.currentOrder.qty.reduce(function(a, b) {
                 return a + b
             }, 0);

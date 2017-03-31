@@ -236,9 +236,6 @@ var _O, _Os, od;
         };
 
         Order.setCurrent = function(order) {
-            if (Order.current) {
-                Order.current.accept();
-            }
             Order.current = order;
             return Order;
         };

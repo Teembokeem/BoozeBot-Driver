@@ -18,8 +18,8 @@
             });
     }
 
-    scannerCrtl.$inject = ['stateManager', 'Order', 'uploadService', '$scope'];
-    function scannerCrtl(state, Order, uploadService, $scope) {
+    scannerCrtl.$inject = ['stateManager', 'Order', 'uploadService', '$scope', '$ionicLoading'];
+    function scannerCrtl(state, Order, uploadService, $scope, $ionicLoading) {
         var $ctrl = this,
             camready = false;
         $ctrl.scan = scan;
@@ -34,12 +34,11 @@
             // if (!Order.current) {
             //     return state.goNoBack('app.orders');
             // }
-            $ctrl.currentOrder = Order.findById($stateParams.id)
+            $ctrl.currentOrder = Order.currect
             document.addEventListener("deviceready", onDeviceReady, false);
         }
 
         function onDeviceReady() {
-
             takePicture();
         };
 
@@ -48,10 +47,20 @@
         }
 
         function scan() {
-            uploadService.uploadFile('data:image/jpeg;base64,' + $ctrl.img).then(function(success) {
+            $ionicLoading.show({
+                template: 'Uploading...',
+            })
+            uploadService.uploadFile('data:image/jpeg;base64,' + $ctrl.img)
+            .then(function(success) {
                 console.log("back from cloudinary", success);
                 Order.current.idPicture = success.secure_url;
-                goToVerify();
+                $ionicLoading.hide()
+                .then(function(){
+                    goToVerify();
+                });
+            })
+            .catch(function(err) {
+                $ionicLoading.hide()
             })
         }
 

@@ -1,7 +1,7 @@
 <div ng-repeat="order in $ctrl.orders" ng-click="$ctrl.moveView(order)">
     <div class="row">
         <div class="col">
-            Name: <span class="address">{{order.owner.fullName}}</span>
+            Name: <span class="address">{{order.owner.name.first}} {{order.owner.name.last}}</span>
         </div>
     </div>
     <div class="row">

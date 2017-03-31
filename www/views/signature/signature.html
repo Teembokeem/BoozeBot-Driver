@@ -7,7 +7,7 @@
                     
                 </div>
                 <div class="col-70 product-description">
-                    <span class="quantity">{{product.Qty}}</span>
+                    <span class="quantity">{{$ctrl.currentOrder.qty[$index]}}</span>
                     <span class="description">{{product.Description}}</span>
                     <span class="brand">{{product.Category}}</span>
                     <span class="price">${{product.PriceB}}</span>

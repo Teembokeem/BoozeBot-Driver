@@ -12,7 +12,7 @@
       <div class="order-summary container">
           <div class="row">
               <div class="col form-title">
-                  ORDER SUMMARY
+                  Order Summary
               </div>
           </div>
           <div ng-repeat="product in $ctrl.order.products" class="row">
@@ -27,32 +27,46 @@
 
               </div>
           </div>
-          <div class="row">
-              <div class="col form-title">
-                  DELIVERY NOTES
+            <div class="row">
+                <div class="col form-title">
+                  Delivery Notes
               </div>
-          </div>
-          <div class="row">
-              <div class="col">
-                  {{$ctrl.order.deliveryNote}}
+            </div>
+            <div class="row">
+                <div class="col notes-text">
+                    <span>{{$ctrl.order.deliveryNote || 'N/A'}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col form-title">
+                  Delivery Details
               </div>
-          </div>
-          <!--<div class="row">
-              <div class="col form-title">
-                  ORDER STATUS
-              </div>
-          </div>
-          <div class="row">
-              <div class="col">
-                 ID SCANNED:  {{$ctrl.order.idScan}}
-              </div>
-              <div class="col">
-                 VERIFIED:  {{$ctrl.order.verified}}
-              </div>
-              <div class="col">
-                SCANNED:  {{$ctrl.order.signed}}
-              </div>
-          </di v>-->
+            </div>
+            <div class="row">
+                <div class="col notes-text">
+                    Customer: <span>{{$ctrl.order.owner.fullName}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    Address: {{$ctrl.order.address.description}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col notes-text">
+                    Email: <span>{{$ctrl.order.owner.email}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col notes-text">
+                    DoB: <span>{{$ctrl.order.owner.dob}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col notes-text">
+                    Phone: <span>{{$ctrl.order.owner.phone}}</span>
+                </div>
+            </div>
           <div class="spacer"></div>
       </div>
   </ion-content>
