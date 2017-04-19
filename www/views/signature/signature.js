@@ -25,8 +25,12 @@ var _sig;
         var sigpad;
 
         $ctrl.complete = complete;
-
-        activate();
+        // document.addEventListener("deviceready", onDeviceReady, false);
+        // function onDeviceReady() {
+        //     console.log('activating????')
+            activate();
+        // };
+        
         ////////////////
 
         function activate() {
@@ -38,7 +42,7 @@ var _sig;
                 var canvas = document.querySelector('canvas');
                 sigpad = new SignaturePad(canvas);
                 _sig = sigpad;
-                console.log("sigpads", sigpad)
+                console.log("HERE FUCKERS", sigpad)
             });
         }
 
