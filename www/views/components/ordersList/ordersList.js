@@ -35,6 +35,10 @@ var _ctrl
             // Order.unsubscribe(setOrders);
         };
 
+        $scope.$on('pull refresh', function(event, mass) { 
+             setOrders(Order.get());
+        });
+
         function byStatus(order) {
             return order.status === $ctrl.status;
         }
@@ -43,7 +47,9 @@ var _ctrl
             $ctrl.orders = orders.filter(byStatus);
             console.log('all orders', orders)
             console.log($ctrl.orders)
+            $scope.$emit('refresh done');
             $scope.$applyAsync();
+            
         }
 
         $ctrl.moveView = function(order) {

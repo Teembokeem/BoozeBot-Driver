@@ -9883,6 +9883,10 @@ ion-list .list {
         font-size: 2.5em;
         color: whitesmoke; }
 
+#myCanvas {
+  width: 100%;
+  height: 100%; }
+
 .orders-view .filter .choose {
   position: fixed;
   top: 10em;
@@ -9894,6 +9898,9 @@ ion-list .list {
 
 .orders-view .scroll * {
   height: 100%; }
+
+.orders-view .scroll ion-list .list {
+  top: 0; }
 
 .orders-view .scroll h4 {
   margin: 5px auto;
@@ -10363,8 +10370,12 @@ delivery-fail {
       font-size: 2em; }
 
 .orders-sign-view .sign-container {
-  margin: 0 auto;
-  margin-bottom: 1em; }
+  margin: 0 auto; }
+  .orders-sign-view .sign-container .x-sign {
+    float: left;
+    bottom: 20vh;
+    position: absolute;
+    margin-left: 20px; }
 
 .orders-completed-view .scroll {
   height: 100%; }
@@ -10384,6 +10395,9 @@ delivery-fail {
 .sign-container canvas {
   border-bottom: 1px solid black;
   width: 90%; }
+
+.done-button {
+  background-color: transparent; }
 
 .login-view {
   background-color: black; }

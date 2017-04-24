@@ -1,12 +1,15 @@
 <ion-view title="Driver Orders">
     <ion-content class="orders-view">
-        <h3 class="order-type">Assigned</h3>
-        <orders-list status="Assigned"></orders-list>
+        <ion-list>
+            <ion-refresher pulling-text="Pull to refresh" on-refresh="$ctrl.doRefresh()"></ion-refresher>
+            <h3 class="order-type">Assigned</h3>
+            <orders-list status="Assigned"></orders-list>
 
-        <h3 class="order-type">Accepted</h3>
-        <orders-list status="Accepted"></orders-list>
+            <h3 class="order-type">Accepted</h3>
+            <orders-list status="Accepted"></orders-list>
 
-        <h3 class="order-type">In Progress</h3>
-        <orders-list status="In Progress"></orders-list>
+            <h3 class="order-type">In Progress</h3>
+            <orders-list status="In Progress"></orders-list> 
+        </ion-list>
     </ion-content>
 </ion-view>

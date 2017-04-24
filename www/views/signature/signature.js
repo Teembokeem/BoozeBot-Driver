@@ -19,17 +19,19 @@ var _sig;
             });
     }
 
-    signatureCrtl.$inject = ['stateManager', 'Order', 'uploadService'];
-    function signatureCrtl(state, Order, uploadService) {
+    signatureCrtl.$inject = ['stateManager', 'Order', 'uploadService', '$timeout', '$ionicLoading'];
+    function signatureCrtl(state, Order, uploadService, $timeout, $ionicLoading) {
         var $ctrl = this;
         var sigpad;
+        var canvas
+        $ctrl.signing = false
+        $ctrl.signed = false
+        $ctrl.prepSign = prepSign
+        $ctrl.completeSign = completeSign
+        $ctrl.clearSigpad = clearSigpad
 
         $ctrl.complete = complete;
-        // document.addEventListener("deviceready", onDeviceReady, false);
-        // function onDeviceReady() {
-        //     console.log('activating????')
-            activate();
-        // };
+        activate();
         
         ////////////////
 
@@ -38,16 +40,60 @@ var _sig;
             $ctrl.currentOrder.totalQty = $ctrl.currentOrder.qty.reduce(function(a, b) {
                 return a + b
             }, 0);
-            angular.element(document).ready(function () {
-                var canvas = document.querySelector('canvas');
-                sigpad = new SignaturePad(canvas);
-                _sig = sigpad;
-                console.log("HERE FUCKERS", sigpad)
-            });
+        }
+
+        window.addEventListener("orientationchange", function(){
+            if (!$ctrl.signing && !$ctrl.signed ) {
+                $ctrl.hide()
+            }
+        });
+
+        function prepSign() {
+             $ctrl.show()
+        }
+
+        function completeSign() {
+            screen.orientation.unlock()
+            $ctrl.signed = true
+            $ctrl.signing = false
+        }
+
+        function resizeCanvas() {
+            var ratio =  Math.max(window.devicePixelRatio || 1, 1);
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = window.screen.height * ratio;
+            canvas.getContext("2d").scale(ratio, ratio);
+            console.log('firing here')
+            sigpad.clear(); // otherwise isEmpty() might return incorrect value
         }
 
         function goToComplete() {
             state.go('app.completedOrder');
+        }
+
+        $ctrl.show = function() {
+            $ionicLoading.show({
+                template: 'Please Rotate Device',
+            })
+        };
+
+        $ctrl.hide = function(){
+            $ionicLoading.hide()
+            .then(function(){
+                $ctrl.rotateMe = false
+                $ctrl.signing = true
+                screen.orientation.lock('landscape');
+                $timeout(function() {
+                    canvas = document.getElementById('myCanvas')
+                    sigpad = new SignaturePad(canvas);
+                    console.log("HERE FUCKERS", sigpad)
+                    resizeCanvas()
+                }, 1000)
+            });
+        };
+
+        function clearSigpad() {
+            sigpad.clear()
         }
 
         function complete() {

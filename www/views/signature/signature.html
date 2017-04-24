@@ -1,38 +1,49 @@
 <ion-view>
+    <ion-nav-buttons side="right"> 
+    <button ng-if="$ctrl.signing" ng-click="$ctrl.completeSign()" class="done-button">Clear</button>
+    <button ng-if="$ctrl.signing" ng-click="$ctrl.clearSigpad()" class="done-button">Done</button>
+    </ion-nav-buttons>
     <ion-content class="orders-sign-view" scroll="false">
-        <div class="order-container">
-            <div ng-repeat="product in $ctrl.currentOrder.products" class="row">
-                <div class="col-30 product-image">
-                    <img src="{{product.image}}" alt="">
-                    
-                </div>
-                <div class="col-70 product-description">
-                    <span class="quantity">{{$ctrl.currentOrder.qty[$index]}}</span>
-                    <span class="description">{{product.Description}}</span>
-                    <span class="brand">{{product.Category}}</span>
-                    <span class="price">${{product.PriceB}}</span>
+        <div class="show-container" ng-if="$ctrl.signing === false">
+            <div class="order-container">
+                <div ng-repeat="product in $ctrl.currentOrder.products" class="row">
+                    <div class="col-30 product-image">
+                        <img src="{{product.image}}" alt="">
+                        
+                    </div>
+                    <div class="col-70 product-description">
+                        <span class="quantity">{{$ctrl.currentOrder.qty[$index]}}</span>
+                        <span class="description">{{product.Description}}</span>
+                        <span class="brand">{{product.Category}}</span>
+                        <span class="price">${{product.PriceB}}</span>
 
+                    </div>
+                </div>
+            </div>
+            <div class="total-arrow-container">
+                <div class="row">
+                    <div class="col total-container">
+                        <span>TOTAL</span>
+                        <span>{{$ctrl.currentOrder.totalQty}} ITEMS</span>
+                        <span>${{$ctrl.currentOrder.total}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col button-container">
+                        <span ng-if="!$ctrl.signed" ng-click="$ctrl.prepSign()">Sign Receipt</span>
+                        <span ng-if="$ctrl.signed" ng-click="$ctrl.complete()">Complete Order</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col button-container">
+                        
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="total-arrow-container">
-            <div class="row">
-                <div class="col total-container">
-                    <span>TOTAL</span>
-                    <span>{{$ctrl.currentOrder.totalQty}} ITEMS</span>
-                    <span>${{$ctrl.currentOrder.total}}</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="sign-container">
-                    <span>x</span>
-                    <canvas id="myCanvas" width="330" height="75"></canvas>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col button-container">
-                    <span ng-click="$ctrl.complete()">CONFIRM & SIGN</span>
-                </div>
+        <div class="signining-container" ng-if="$ctrl.signing === true">
+            <div class="sign-container">
+                <canvas id="myCanvas" width="330" height="400"></canvas>
             </div>
         </div>
     </ion-content>

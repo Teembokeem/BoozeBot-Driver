@@ -22,6 +22,10 @@
             height: 100%;
         }
 
+        ion-list .list {
+            top: 0;
+        }
+
         h4 {
             margin: 5px auto;
             text-align: center;
@@ -757,17 +761,12 @@ delivery-fail {
 
     .sign-container {
         margin: 0 auto;
-        margin-bottom: 1em;
-
-        // .row {
-        //     // .x {
-
-        //     // }
-
-        //     // .sign {
-                
-        //     // }
-        // }
+        .x-sign {
+            float: left;
+            bottom: 20vh;
+            position: absolute;
+            margin-left: 20px;
+        }
     }
 }
 
@@ -800,4 +799,8 @@ delivery-fail {
         border-bottom: 1px solid black;
         width: 90%;
     }
+}
+
+.done-button {
+    background-color: transparent;
 }

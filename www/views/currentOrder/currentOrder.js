@@ -81,7 +81,7 @@
         function startScan() {
             console.log('$ctrlanning')
             Order.setCurrent($ctrl.currentOrder);
-            $state.go('app.signature');
+            $state.go('app.scanner');
         };
     }
 })();
