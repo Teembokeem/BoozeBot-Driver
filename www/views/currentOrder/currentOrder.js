@@ -19,13 +19,21 @@
             });
     }
 
-    currentOrderCtrl.$inject = ['$state', 'Order', '$ionicPopup', 'NgMap', '$cordovaGeolocation', '$stateParams', 'stateManager', '$ionicHistory'];
-    function currentOrderCtrl($state, Order, $ionicPopup, NgMap, $cordovaGeolocation, $stateParams, state, $ionicHistory) {
+    currentOrderCtrl.$inject = ['$state', 'Order', '$ionicPopup', 'NgMap', '$cordovaGeolocation', '$stateParams', 'stateManager', '$ionicHistory', 'paymentService', '$scope'];
+    function currentOrderCtrl($state, Order, $ionicPopup, NgMap, $cordovaGeolocation, $stateParams, state, $ionicHistory, paymentService, $scope) {
         var $ctrl = this;
         $ctrl.goToOrders = goToOrders;
         $ctrl.startScan = startScan;
+        $scope.$watch('$ctrl.currentOrder', function() {
+            paymentService.verify($ctrl.currentOrder.owner.stripeID, $ctrl.currentOrder.creditCard)
+            .then(function(res) {
+                $ctrl.currentOrder.cc = res.data
+                console.log("LSDJFLSDJFKL", $ctrl.currentOrder)
+            })
+        })
 
         activate();
+        
 
 
 
@@ -40,6 +48,7 @@
         function activate() {
             $ctrl.currentOrder = Order.findById($stateParams.id)//(function(order) { return order._id === $stateParams.id})[0];
             console.log($ctrl.currentOrder, 'here?')
+
 
             NgMap.getMap().then(function(map) {
                 $ctrl.map = map;

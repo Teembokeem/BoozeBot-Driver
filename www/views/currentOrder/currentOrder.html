@@ -26,7 +26,7 @@
         <div class="container notes-container">
             <div class="row">
                 <div class="col notes-title">
-                    <span>Delivery Notes</span>
+                    <span>Delivery Notes/Apartment #</span>
                 </div>
             </div>
             <div class="row">
@@ -64,6 +64,23 @@
             <div class="row">
                 <div class="col notes-text">
                     Phone: <span>{{$ctrl.currentOrder.owner.phone}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="container notes-container">
+            <div class="row">
+                <div class="col notes-title">
+                    <span>Credit Card Info</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col notes-text">
+                    Last 4: <span>**** **** *** {{$ctrl.currentOrder.cc.last4}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col notes-text">
+                    Expiration: <span>{{$ctrl.currentOrder.cc.exp_month}}/{{$ctrl.currentOrder.cc.exp_year}}</span>
                 </div>
             </div>
         </div>

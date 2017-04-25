@@ -18,8 +18,8 @@
             });
     }
 
-    orderDetailsCtrl.$inject = ['$state', '$stateParams', 'Order', 'stateManager', '$ionicHistory'];
-    function orderDetailsCtrl($state, $stateParams, Order, state, $ionicHistory) {
+    orderDetailsCtrl.$inject = ['$state', '$stateParams', 'Order', 'stateManager', '$ionicHistory', 'paymentService'];
+    function orderDetailsCtrl($state, $stateParams, Order, state, $ionicHistory, paymentService) {
         var $ctrl = this
 
         $ctrl.action = action;
@@ -32,6 +32,7 @@
             console.log('Activated', $stateParams.id, $ctrl);
 
             $ctrl.order = Order.findById($stateParams.id)//(function(order) { return order._id === $stateParams.id})[0];
+            console.log("hereeeee", $ctrl.order)
 
         }
 
